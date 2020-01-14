@@ -92,7 +92,7 @@ func (api API) Request(method, path string, params QueryParams, body, response i
 			}
 		}
 		req.URL.RawQuery = queryParams.Encode()
-		
+
 		if api.Debug {
 			log.Printf("Adding query params: %q\n", req.URL.Query())
 		}

@@ -10,15 +10,14 @@ const (
 	single_template_path = templates_path + "/%s"
 )
 
-
 type TemplateQueryParams struct {
 	ExtendedQueryParams
 
-	CreatedBy string
-	SinceCreatedAt string
+	CreatedBy       string
+	SinceCreatedAt  string
 	BeforeCreatedAt string
-	Type string
-	FolderId string
+	Type            string
+	FolderId        string
 }
 
 func (q TemplateQueryParams) Params() map[string]string {
@@ -40,15 +39,15 @@ type ListOfTemplates struct {
 type TemplateResponse struct {
 	withLinks
 
-	ID          uint `json:"id"`
+	ID          uint   `json:"id"`
 	Type        string `json:"type"`
-	Name        string   `json:"name"`
-	DragAndDrop bool `json:"drag_and_drop"`
-	Responsive  bool `json:"responsive"`
+	Name        string `json:"name"`
+	DragAndDrop bool   `json:"drag_and_drop"`
+	Responsive  bool   `json:"responsive"`
 	Category    string `json:"category"`
 	DateCreated string `json:"date_created"`
 	CreatedBy   string `json:"created_by"`
-	Active      bool `json:"activer"`
+	Active      bool   `json:"activer"`
 	FolderId    string `json:"folder_id"`
 	Thumbnail   string `json:"thumbnail"`
 	ShareUrl    string `json:"share_url"`
@@ -60,7 +59,6 @@ type TemplateCreationRequest struct {
 	Name     string `json:"name"`
 	Html     string `json:"html"`
 	FolderId string `json:"folder_id"`
-
 }
 
 func (template TemplateResponse) CanMakeRequest() error {
