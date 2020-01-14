@@ -138,7 +138,7 @@ func (api API) DeleteStore(id string) (bool, error) {
 type CustomerList struct {
 	APIError
 
-	Customers  []Customer `json:"customer"`
+	Customers  []Customer `json:"customers"`
 	TotalItems int        `json:"total_items"`
 	Links      []Link     `json:"_links"`
 }
@@ -187,6 +187,17 @@ func (store Store) CreateCustomer(req *Customer) (*Customer, error) {
 	res := new(Customer)
 
 	return res, store.api.Request("POST", endpoint, nil, req, res)
+}
+
+func (store Store) AddOrUpdateCustomer(req *Customer) (*Customer, error) {
+	if err := store.HasID(); err != nil {
+		return nil, err
+	}
+
+	endpoint := fmt.Sprintf(customer_path, store.ID, req.ID)
+	res := new(Customer)
+
+	return res, store.api.Request("PUT", endpoint, nil, req, res)
 }
 
 func (store Store) UpdateCustomer(req *Customer) (*Customer, error) {
