@@ -40,6 +40,11 @@ type MemberRequest struct {
 	TimestampOpt    string                 `json:"timestamp_opt,omitempty"`
 }
 
+type Tag struct {
+	ID   int64  `json:"id"`
+	Name string `json:"name"`
+}
+
 type Member struct {
 	MemberRequest
 
@@ -52,6 +57,7 @@ type Member struct {
 	LastChanged   string          `json:"last_changed"`
 	EmailClient   string          `json:"email_client"`
 	LastNote      MemberNoteShort `json:"last_note"`
+	Tags          []Tag           `json:"tags,omitempty"`
 
 	api *API
 }
